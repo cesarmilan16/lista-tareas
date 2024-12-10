@@ -33,6 +33,14 @@ p {
     font-weight: 400;
 }
 
+button {
+    all: unset;
+}
+
+button:focus {
+    outline: none;
+}
+
 .contenedor {
     display: flex;
     flex-direction: column;
@@ -96,6 +104,11 @@ p {
     background-color: #ffffff; /* Fondo blanco cuando está en foco */
 }
 
+.boton-lista:focus {
+    background-color: #0066c5; /* Color más oscuro al tocar */
+    transform: translateY(-2px); /* Vuelve a la posición original */
+}
+
 .boton-lista {
     background-color: #003adb; 
     color: white;
@@ -103,30 +116,19 @@ p {
     cursor: pointer;
     border: none;
     border-radius: 10px;
+    transform: translateY(0);
     transition: all 0.3s ease; /* Transición suave para el cambio de color */
 }
 
-
-.boton-lista:hover {
-    background-color: #0066c5; /* Cambio de color al pasar el ratón */
-    transform: translateY(-2px); /* Efecto de elevarse */
-}
-
-.boton-lista:active {
-    background-color: #003adb; /* Color más oscuro cuando el botón es pulsado */
-    transform: translateY(0); /* El botón vuelve a la posición original */
-}
-
-@media (max-width: 768px) {
-    .boton-lista:focus {
-        background-color: #0066c5; /* Color más oscuro al tocar */
-        transform: translateY(2px); /* Vuelve a la posición original */
+@media (min-width: 768px) {
+    .boton-lista:hover {
+        background-color: #0066c5; /* Cambio de color al pasar el ratón */
+        transform: translateY(-2px); /* Efecto de elevarse */
     }
-
-    /* Restablecer el estilo después de tocar */
-    .boton-lista:not(:active) {
-        background-color: #003adb; /* Color original */
-        transform: translateY(0); /* Volver a la posición original */
+    
+    .boton-lista:active {
+        background-color: #003adb; /* Color más oscuro cuando el botón es pulsado */
+        transform: translateY(0); /* El botón vuelve a la posición original */
     }
 }
 
@@ -178,8 +180,7 @@ p {
 }
 
 .boton-tarea button {
-    position: relative; /* Para asegurar que el SVG se pueda posicionar correctamente */
-    width: 48px; /* Mantener un tamaño constante para el botón */
+    width: 48px;
     height: 48px;
     padding: 0; /* Eliminar cualquier padding que afecte el tamaño */
     border: none; /* Eliminar bordes, si los tiene */
@@ -190,31 +191,27 @@ p {
     overflow: hidden; /* Ocultar el exceso de contenido que se escala */
     outline: none;
     cursor: pointer;
+    transform: scale(1);
+    transform-origin: center;
 }
 
-/* Estilo inicial del SVG dentro del botón */
-.boton-tarea button svg {
-    width: 100%; /* El SVG ocupa el 100% del contenedor */
-    height: 100%;
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
-    transition: filter 0.3s ease; /* Transición suave */
-}
-
-/* Efecto al pasar el ratón sobre el SVG (escritorio) */
-.boton-tarea button svg:hover {
-    transform: scale(1.2); /* Escala el SVG */
+.boton-tarea button:active svg {
+    transform: scale(1.2);
     transform-origin: center; /* Escala desde el centro del SVG */
 }
 
-/* Para dispositivos móviles */
-@media (max-width: 768px) {
-    .boton-tarea button:active svg {
-        transform: scale(1.2);
-        transform-origin: center; /* Escala desde el centro del SVG */
+@media (min-width: 768px) {
+    /* Estilo inicial del SVG dentro del botón */
+    .boton-tarea button svg {
+        width: 100%; /* El SVG ocupa el 100% del contenedor */
+        height: 100%;
+        filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+        transition: filter 0.3s ease; /* Transición suave */
     }
 
-    .boton-tarea button:not(:active) svg {
-        transform: scale(1);
+    /* Efecto al pasar el ratón sobre el SVG (escritorio) */
+    .boton-tarea button svg:hover {
+        transform: scale(1.2); /* Escala el SVG */
         transform-origin: center; /* Escala desde el centro del SVG */
     }
 }
