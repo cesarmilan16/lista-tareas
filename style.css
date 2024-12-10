@@ -188,6 +188,7 @@ p {
     justify-content: center;
     align-items: center;
     overflow: hidden; /* Ocultar el exceso de contenido que se escala */
+    outline: none;
     cursor: pointer;
 }
 
