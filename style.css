@@ -33,14 +33,6 @@ p {
     font-weight: 400;
 }
 
-button {
-    all: unset;
-}
-
-button:focus {
-    outline: none;
-}
-
 .contenedor {
     display: flex;
     flex-direction: column;
@@ -49,7 +41,6 @@ button:focus {
     padding: 2rem 0;
     min-height: 100vh;
     transition: transform 0.3s ease;
-    
 }
 
 .contenedor-lista {
@@ -99,14 +90,8 @@ button:focus {
 }
 
 .input-lista:focus {
-    outline: none; /* Quitar el borde predeterminado del navegador */
     border-color: #2883a7; /* Borde verde más brillante cuando está en foco */
     background-color: #ffffff; /* Fondo blanco cuando está en foco */
-}
-
-.boton-lista:focus {
-    background-color: #0066c5; /* Color más oscuro al tocar */
-    transform: translateY(-2px); /* Vuelve a la posición original */
 }
 
 .boton-lista {
@@ -118,6 +103,17 @@ button:focus {
     border-radius: 10px;
     transform: translateY(0);
     transition: all 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.boton-lista:active {
+    background-color: #0066c5; /* Cambiar color al tocar */
+    transform: translateY(2px); /* Bajar ligeramente */
+}
+
+/* Restablecer automáticamente al soltar el toque */
+.boton-lista {
+    transform: translateY(0); /* Volver al estado inicial */
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 @media (min-width: 768px) {
@@ -189,10 +185,12 @@ button:focus {
     justify-content: center;
     align-items: center;
     overflow: hidden; /* Ocultar el exceso de contenido que se escala */
-    outline: none;
     cursor: pointer;
     transform: scale(1);
     transform-origin: center;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+    transition: filter 0.3s ease; /* Transición suave */
+    -webkit-tap-highlight-color: transparent;
 }
 
 .boton-tarea button:active svg {
@@ -205,13 +203,16 @@ button:focus {
     .boton-tarea button svg {
         width: 100%; /* El SVG ocupa el 100% del contenedor */
         height: 100%;
-        filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
-        transition: filter 0.3s ease; /* Transición suave */
     }
 
     /* Efecto al pasar el ratón sobre el SVG (escritorio) */
     .boton-tarea button svg:hover {
         transform: scale(1.2); /* Escala el SVG */
+        transform-origin: center; /* Escala desde el centro del SVG */
+    }
+
+    .boton-tarea button svg:active {
+        transform: scale(1); /* Escala el SVG */
         transform-origin: center; /* Escala desde el centro del SVG */
     }
 }
