@@ -117,16 +117,9 @@ p {
     transform: translateY(0); /* El botón vuelve a la posición original */
 }
 
-/* Para móviles, usamos el :focus para simular hover */
 @media (max-width: 768px) {
-    .boton-lista:focus {
-        background-color: #0066c5; /* Similar al hover */
-        transform: translateY(-2px); /* Efecto de elevarse */
-    }
-
-    /* En dispositivos móviles también podemos agregar un efecto en active */
     .boton-lista:active {
-        background-color: #003adb; /* Color más oscuro al tocar */
+        background-color: #0066c5; /* Color más oscuro al tocar */
         transform: translateY(2px); /* Vuelve a la posición original */
     }
 
@@ -196,6 +189,7 @@ p {
     align-items: center;
     overflow: hidden; /* Ocultar el exceso de contenido que se escala */
     cursor: pointer;
+    outline: none;
 }
 
 /* Estilo inicial del SVG dentro del botón */
@@ -215,7 +209,12 @@ p {
 /* Para dispositivos móviles */
 @media (max-width: 768px) {
     .boton-tarea button:active svg {
-        animation: zoom 0.3s ease;
+        transform: scale(1.2);
+        transform-origin: center; /* Escala desde el centro del SVG */
+    }
+
+    .boton-tarea button:not(:active) svg {
+        transform: scale(1);
         transform-origin: center; /* Escala desde el centro del SVG */
     }
 }
@@ -256,15 +255,6 @@ p {
     }
     100% {
         transform: translateY(0);
-    }
-}
-
-@keyframes zoom {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.2);
     }
 }
 
