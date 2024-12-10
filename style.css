@@ -1,0 +1,261 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /* 1rem = 10px */
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #3a85d4, #76c7f0);
+    color: #333;
+    margin: 0;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+    h2 {
+        font-size: 4rem;
+        font-weight: 900;
+    }
+}
+
+p {
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    min-height: 100vh;
+    transition: transform 0.3s ease;
+    
+}
+
+.contenedor-lista {
+    display: grid;
+    gap: 1rem;
+    position: relative;
+    transition: transform 0.5s ease;
+
+}
+
+.contenedor-input {
+    display: grid;
+    width: 350px;
+    height: 150px;
+    padding: 2rem;
+    gap: 2rem;
+    text-align: center;
+    background-color: rgba(151, 180, 206, 0.4);
+    color: #333; /* Texto oscuro */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+    .contenedor-input {
+        width: 500px;
+        height: 200px; 
+    }
+}
+
+/* Estilos para los elementos dentro de la lista de tareas */
+.lista-tareas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.input-lista {
+    padding: 1rem;
+    width: 90%;
+    border: 2px solid #00afdb;
+    border-radius: 10px;
+    background-color: #f5f5f5; /* Fondo claro */
+    color: #333; /* Color del texto */
+    transition: all 0.3s ease; /* Transición suave para el borde */
+}
+
+.input-lista:focus {
+    outline: none; /* Quitar el borde predeterminado del navegador */
+    border-color: #2883a7; /* Borde verde más brillante cuando está en foco */
+    background-color: #ffffff; /* Fondo blanco cuando está en foco */
+}
+
+.boton-lista {
+    background-color: #003adb; 
+    color: white;
+    padding: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+
+.boton-lista:hover {
+    background-color: #0066c5; /* Cambio de color al pasar el ratón */
+    transform: translateY(-2px); /* Efecto de elevarse */
+}
+
+.boton-lista:active {
+    background-color: #003adb; /* Color más oscuro cuando el botón es pulsado */
+    transform: translateY(0); /* El botón vuelve a la posición original */
+}
+
+/* Para móviles, usamos el :focus para simular hover */
+@media (max-width: 768px) {
+    .boton-lista:focus {
+        background-color: #0066c5; /* Similar al hover */
+        transform: translateY(-2px); /* Efecto de elevarse */
+    }
+
+    /* En dispositivos móviles también podemos agregar un efecto en active */
+    .boton-lista:active {
+        background-color: #003adb; /* Color más oscuro al tocar */
+        transform: translateY(0); /* Vuelve a la posición original */
+    }
+}
+
+.contenedor-tarea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    width: 350px;
+    text-align: center;
+    background-color: rgba(151, 180, 206, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    color: black;
+    border-radius: 5px;
+    opacity: 0; /* Para iniciar oculta */
+    transform: scale(0.9); /* Reducida inicialmente */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transición suave */
+}
+
+@media (min-width: 768px) {
+    .contenedor-tarea {
+        width: 500px;
+    }
+}
+
+
+/* Cuando se añade (aparece) */
+.contenedor-tarea.visible {
+    opacity: 1; /* Totalmente visible */
+    transform: scale(1); /* Tamaño normal */
+}
+
+/* Cuando se elimina (desaparece) */
+.contenedor-tarea.eliminando {
+    opacity: 0; /* Se desvanece */
+    transform: scale(0.9); /* Se encoge */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transición suave */
+}
+
+.texto-tarea {
+    max-width: 70%;
+    overflow-wrap: break-word;
+    text-align: left;
+}
+
+.boton-tarea {
+    display: flex;
+    gap: .5rem;
+}
+
+.boton-tarea button {
+    position: relative; /* Para asegurar que el SVG se pueda posicionar correctamente */
+    width: 48px; /* Mantener un tamaño constante para el botón */
+    height: 48px;
+    padding: 0; /* Eliminar cualquier padding que afecte el tamaño */
+    border: none; /* Eliminar bordes, si los tiene */
+    background-color: transparent; /* Fondo transparente */
+    display: inline-flex; /* Para alinear el contenido dentro */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ocultar el exceso de contenido que se escala */
+}
+
+/* Estilo inicial del SVG dentro del botón */
+.boton-tarea button svg {
+    width: 100%; /* El SVG ocupa el 100% del contenedor */
+    height: 100%;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+/* Efecto al pasar el ratón sobre el SVG (escritorio) */
+.boton-tarea button svg:hover {
+    transform: scale(1.2); /* Escala el SVG */
+    transform-origin: center; /* Escala desde el centro del SVG */
+}
+
+/* Para dispositivos móviles */
+@media (max-width: 768px) {
+    .boton-tarea button:active svg {
+        transform: scale(1.2); /* Escala el SVG al tocar */
+        transform-origin: center; /* Escala desde el centro del SVG */
+    }
+}
+
+.mensaje-error {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336; /* Rojo para errores */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    z-index: 1000;
+}
+
+@media (min-width: 768px) {
+    .mensaje-error {
+        font-size: 18px;
+        padding: 15px 35px;
+    }
+}
+
+@keyframes subir {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes bajar {
+    0% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.subir {
+    animation: subir 0.6s ease forwards;
+}
+
+.bajar {
+    animation: bajar 0.6s ease forwards;
+}
