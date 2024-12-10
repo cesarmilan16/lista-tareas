@@ -189,6 +189,7 @@ p {
     justify-content: center;
     align-items: center;
     overflow: hidden; /* Ocultar el exceso de contenido que se escala */
+    cursor: pointer;
 }
 
 /* Estilo inicial del SVG dentro del botón */
