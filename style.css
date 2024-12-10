@@ -118,7 +118,7 @@ p {
 }
 
 @media (max-width: 768px) {
-    .boton-lista:active {
+    .boton-lista:focus {
         background-color: #0066c5; /* Color más oscuro al tocar */
         transform: translateY(2px); /* Vuelve a la posición original */
     }
@@ -189,7 +189,6 @@ p {
     align-items: center;
     overflow: hidden; /* Ocultar el exceso de contenido que se escala */
     cursor: pointer;
-    outline: none;
 }
 
 /* Estilo inicial del SVG dentro del botón */
@@ -197,7 +196,7 @@ p {
     width: 100%; /* El SVG ocupa el 100% del contenedor */
     height: 100%;
     filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
-    transition: transform 0.3s ease; /* Transición suave */
+    transition: filter 0.3s ease; /* Transición suave */
 }
 
 /* Efecto al pasar el ratón sobre el SVG (escritorio) */
