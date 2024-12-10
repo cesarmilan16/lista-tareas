@@ -127,7 +127,13 @@ p {
     /* En dispositivos móviles también podemos agregar un efecto en active */
     .boton-lista:active {
         background-color: #003adb; /* Color más oscuro al tocar */
-        transform: translateY(0); /* Vuelve a la posición original */
+        transform: translateY(2px); /* Vuelve a la posición original */
+    }
+
+    /* Restablecer el estilo después de tocar */
+    .boton-lista:not(:active) {
+        background-color: #003adb; /* Color original */
+        transform: translateY(0); /* Volver a la posición original */
     }
 }
 
@@ -209,7 +215,7 @@ p {
 /* Para dispositivos móviles */
 @media (max-width: 768px) {
     .boton-tarea button:active svg {
-        transform: scale(1.2); /* Escala el SVG al tocar */
+        animation: zoom 0.3s ease;
         transform-origin: center; /* Escala desde el centro del SVG */
     }
 }
@@ -250,6 +256,15 @@ p {
     }
     100% {
         transform: translateY(0);
+    }
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
     }
 }
 
