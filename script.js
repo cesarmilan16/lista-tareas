@@ -27,7 +27,7 @@ function agregarTarea(event) {
     }
 
     // Creamos la tarea en el html
-    const nuevaTarea = document.createElement("div");
+    const nuevaTarea = document.createElement("li");
     nuevaTarea.classList.add("contenedor-tarea");
 
     nuevaTarea.innerHTML = `
