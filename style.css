@@ -84,8 +84,8 @@ p {
     width: 90%;
     border: 2px solid #017f9e;
     border-radius: 10px;
-    background-color: #f5f5f5; /* Fondo claro */
-    color: #333; /* Color del texto */
+    background-color: #f5f5f5;
+    color: #333;
     transition: all 0.5s ease; /* Transición suave para el borde */
 }
 
@@ -179,8 +179,8 @@ p {
 .boton-tarea button {
     width: 48px;
     height: 48px;
-    padding: 0; /* Eliminar cualquier padding que afecte el tamaño */
-    border: none; /* Eliminar bordes, si los tiene */
+    padding: 0;
+    border: none;
     background-color: transparent; /* Fondo transparente */
     display: inline-flex; /* Para alinear el contenido dentro */
     justify-content: center;
